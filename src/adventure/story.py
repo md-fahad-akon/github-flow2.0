@@ -41,7 +41,7 @@ if __name__ == "__main__":
         choice = choice.strip().lower()
         
         if choice == 'exit':
-            console.print("[bold red]Goodbye! Thanks for playing![/bold red]")
+            console.print("\n[bold green]Goodbye! Thanks for playing the adventure![/bold green]")
             break
         
         # Display the result with color
