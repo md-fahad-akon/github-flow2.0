@@ -32,12 +32,7 @@ if __name__ == "__main__":
     console.print(Panel(intro_text, title="🌲 Adventure Begins", border_style="green"))
     
     while True:
-        # Replace input() with Prompt.ask() from rich
-        choice = Prompt.ask(
-            "\n[bold yellow]Which direction do you choose?[/bold yellow]",
-            choices=["left", "right", "exit"],
-            default="exit"
-        )
+        choice = console.input("[bold yellow]Which direction do you choose? (left/right/exit):[/bold yellow] ")
         choice = choice.strip().lower()
         
         if choice == 'exit':
