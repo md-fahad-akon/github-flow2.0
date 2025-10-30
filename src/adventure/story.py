@@ -1,5 +1,12 @@
 from adventure.utils import read_events_from_file
 import random
+from rich.console import Console
+from rich.prompt import Prompt
+from rich.panel import Panel
+from rich.text import Text
+
+# Create a console instance for rich output
+console = Console()
 
 default_message = "You stand still, unsure what to do. The forest swallows you."
 
@@ -22,11 +29,18 @@ def right_path(event):
 if __name__ == "__main__":
     events = read_events_from_file('events.txt')
 
-    print("You wake up in a dark forest. You can go left or right.")
+    # Use rich to display the intro with styling
+    intro_text = Text("You wake up in a dark forest. You can go left or right.", style="bold cyan")
+    console.print(Panel(intro_text, title="🌲 Adventure Begins", border_style="green"))
+    
     while True:
-        choice = input("Which direction do you choose? (left/right/exit): ")
+        choice = console.input("[bold yellow]Which direction do you choose? (left/right/exit):[/bold yellow] ")
         choice = choice.strip().lower()
+        
         if choice == 'exit':
+            print("Goodbye! Thanks for playing!")
             break
         
-        print(step(choice, events))
+        # Display the result with color
+        result = step(choice, events)
+        console.print(f"[bold magenta]{result}[/bold magenta]")
